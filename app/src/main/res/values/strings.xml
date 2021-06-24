@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">FlatTris</string>
+    <string name="title_home">Exit</string>
+    <string name="title_dashboard">Play Game</string>
+    <string name="title_notifications">Settings</string>
+    <string name="Settings_Button_1">Sound on/off</string>
+    <string name="Sound_off">Sound off</string>
+    <string name="Sound_on">Sound on</string>
+    <string name="Start">Start</string>
+    <string name="tl">Turn left</string>
+    <string name="ml">Move left</string>
+    <string name="md">Move down</string>
+    <string name="mr">Move right</string>
+    <string name="tr">Turn right</string>
+</resources>

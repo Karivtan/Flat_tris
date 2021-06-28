@@ -1,8 +1,13 @@
 package com.example.flattris;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +16,7 @@ import android.widget.TextClock;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,17 +26,21 @@ import java.util.ArrayList;
 public class flattris extends AppCompatActivity {
     private int[][] well = new int[22][12];
     private Point pieceOrigin;
-    private int rotation, rcolumn, nLives, maxWell;
+    private int rotation, rcolumn, nLives, maxWell, score;
     private int cRow=0;
     private ImageButton [][] buttons;
     private FlatThread mythread;
     private boolean topreached;
     private Piece cPiece;
     private int delay =1000;
-    private boolean pieceFalling;
-    private ArrayList<Integer> nextPieces = new ArrayList<Integer>();
+    private boolean pieceFalling, gamerun, gamestarted;
+    private ArrayList<Integer> nextPieces = new ArrayList<>();
     private final int[] colors = new int[]{0xFFFFFFFF,0xFF000055, 0xFF0000AA, 0xFF0000FF, 0xFF005500, 0xFF00AA00, 0xFF00FF00, 0xFF550000, 0xFFAA0000, 0xFFFF0000};
     private Bundle savedInstanceState;
+    Handler mHandler;
+    int [] ButtonImages= new int[10];
+
+
     private final Point[][][] FlatrisBlocks = {
             // here all the pieces need to come in
             // 1-piece
@@ -49,22 +59,73 @@ public class flattris extends AppCompatActivity {
             },
             // 4-piece
             {
-                    {new Point(0,0), new Point(-1,0), new Point(-1,-1), new Point(1,0)}
-            }
+                    {new Point(0, 0), new Point(-1, 0), new Point(-1, -1), new Point(1, 0)},
+                    {new Point(0, 0), new Point(-1, 0), new Point(-1, -1), new Point(0, 1)},
+                    {new Point(0, 0), new Point(-1, 0), new Point(1, -1), new Point(1, 0)},
+                    {new Point(0, 0), new Point(1, 0), new Point(1, -1), new Point(0, 1)},
+                    {new Point(0, 0), new Point(-1, 0), new Point(0, -1), new Point(1, 0)}
+            },
             // 5-piece
+            {
+                    {new Point(0, 0), new Point(-1, 0), new Point(-1, -1), new Point(1, 0), new Point(0,-1)},
+                    {new Point(0, 0), new Point(-1, 0), new Point(-1, -1), new Point(1, 0), new Point(1,1)},
+                    {new Point(0, 0), new Point(-1, 0), new Point(-1, -1), new Point(1, 0), new Point(0,1)},
+                    {new Point(0, 0), new Point(-1, 0), new Point(-1, -1), new Point(1, 0), new Point(-1,1)},
+                    {new Point(0, 0), new Point(-1, 0), new Point(-1, -1), new Point(1, 0), new Point(1,-1)},
+                    {new Point(0, 0), new Point(-1, 0), new Point(1, -1), new Point(1, 0), new Point(0,-1)},
+                    {new Point(0, 0), new Point(-1, 0), new Point(1, -1), new Point(1, 0), new Point(-1,1)},
+                    {new Point(0, 0), new Point(-1, 0), new Point(1, -1), new Point(1, 0), new Point(0,1)},
+                    {new Point(0, 0), new Point(0, 1), new Point(1, -1), new Point(1, 0), new Point(-1,1)},
+                    {new Point(0, 0), new Point(-1, 0), new Point(1, -1), new Point(0, -1), new Point(-1,1)},
+                    {new Point(0, 0), new Point(0, 1), new Point(1, 0), new Point(-1, 0), new Point(0,-1)},
+            },
             // 6-piece
+            {
+                    {new Point(-1, -1), new Point(-1, 0), new Point(0, -1), new Point(0, 0), new Point(1,-1), new Point(1,0)},
+                    {new Point(-1, -1), new Point(-1, 0), new Point(0, -1), new Point(0, 0), new Point(1,1), new Point(1,0)},
+                    {new Point(-1, -1), new Point(-1, 0), new Point(0, -1), new Point(0, 0), new Point(0,1), new Point(1,0)},
+                    {new Point(-1, -1), new Point(-1, 0), new Point(0, -1), new Point(0, 0), new Point(-1,1), new Point(1,0)},
+                    {new Point(-1, -1), new Point(-1, 0), new Point(0, -1), new Point(0, 0), new Point(0,1), new Point(1,1)},
+                    {new Point(-1, -1), new Point(-1, 0), new Point(0, -1), new Point(-1, 1), new Point(1,-1), new Point(1,0)},
+                    {new Point(-1, -1), new Point(-1, 0), new Point(0, -1), new Point(1, 1), new Point(1,-1), new Point(1,0)},
+                    {new Point(-1, -1), new Point(0, 1), new Point(0, -1), new Point(0, 0), new Point(1,-1), new Point(1,1)},
+                    {new Point(-1, -1), new Point(0, 1), new Point(0, -1), new Point(0, 0), new Point(1,-1), new Point(-1,1)},
+                    {new Point(-1, -1), new Point(-1, 0), new Point(0, -1), new Point(0, 0), new Point(1,-1), new Point(0,1)},
+                    {new Point(-1, -1), new Point(-1, 0), new Point(0, -1), new Point(0, 0), new Point(1,-1), new Point(-1,1)}
+            },
             // 7-piece
+            {
+                    {new Point(-1, -1), new Point(-1, 0), new Point(0, -1), new Point(0, 0), new Point(1,-1), new Point(1,0), new Point(-1,1)},
+                    {new Point(-1, -1), new Point(-1, 0), new Point(0, -1), new Point(0, 0), new Point(1,-1), new Point(1,0), new Point(0,1)},
+                    {new Point(-1, -1), new Point(-1, 0), new Point(0, -1), new Point(0, 0), new Point(1,-1), new Point(1,0), new Point(1,1)},
+                    {new Point(-1, -1), new Point(-1, 0), new Point(0, -1), new Point(1, 1), new Point(1,-1), new Point(1,0), new Point(-1,1)},
+                    {new Point(-1, -1), new Point(-1, 0), new Point(0, -1), new Point(0, 0), new Point(1,1), new Point(1,0), new Point(-1,1)},
+                    {new Point(-1, -1), new Point(-1, 0), new Point(0, -1), new Point(0, 0), new Point(1,1), new Point(1,0), new Point(0,1)}
+            },
             // 8-piece
+            {
+                    {new Point(-1, -1), new Point(-1, 0), new Point(0, -1), new Point(0, 0), new Point(1,-1), new Point(1,0), new Point(-1,1), new Point(0,1)},
+                    {new Point(-1, -1), new Point(-1, 0), new Point(0, -1), new Point(0, 0), new Point(1,-1), new Point(1,0), new Point(-1,1), new Point(1,1)}
+            },
             // 9-piece
+            {
+                    {new Point(-1, -1), new Point(-1, 0), new Point(0, -1), new Point(0, 0), new Point(1,-1), new Point(1,0), new Point(-1,1), new Point(0,1), new Point(1,1)}
+            }
     };
 
     private TextView mClock;
 
     /*
-     *   TODO: Add lives
      *    TODO: Add speed increment
-     *      TODO: add bigger blocks
-     *       TODO: check neighbours
+     *         TODO: add commercials
+     *          TODO: add instructions
+     *           TODO: add privacy documentation
+     *            TODO: add settings
+     *             Todo: add challenge mode (speed increment)
+     *              todo:add infinity mode (no increment)
+     *               todo: add decent construction mode (all levels below need to be connected)
+     *                todo: add google play achievements
+     *
      */
 
     @Override
@@ -72,15 +133,35 @@ public class flattris extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.savedInstanceState=savedInstanceState;
         setContentView(R.layout.activity_main);
+        initializeButtonImages();
         buttons = fillButtonArray();
         initialize(buttons);
         initializePressButtons();
+        gamerun=false;
+        gamestarted=false;
         initializeTopButtons();
+        mHandler = new Handler();
+
+    }
+
+    public void initializeButtonImages(){
+        ButtonImages[0]=R.drawable.ic_f0;
+        ButtonImages[1]=R.drawable.ic_f1;
+        ButtonImages[2]=R.drawable.ic_f2;
+        ButtonImages[3]=R.drawable.ic_f3;
+        ButtonImages[4]=R.drawable.ic_f4;
+        ButtonImages[5]=R.drawable.ic_f5;
+        ButtonImages[6]=R.drawable.ic_f6;
+        ButtonImages[7]=R.drawable.ic_f7;
+        ButtonImages[8]=R.drawable.ic_f8;
+        ButtonImages[9]=R.drawable.ic_f9;
     }
 
     public void runGame(Bundle savedInstanceState){
+
         mythread = new FlatThread();
         mythread.start();
+
     }
 
 
@@ -145,6 +226,7 @@ public class flattris extends AppCompatActivity {
             for (int i=0;i<ps.length;i++) {
                 if (ps[i].y+cRow<0||well[ps[i].y+cRow][ps[i].x+rcolumn]>0) {
                     blocked = true;
+                    break;
                 }
             }
         }
@@ -196,6 +278,7 @@ public class flattris extends AppCompatActivity {
             for (int i=0;i<ps.length;i++) {
                 if (ps[i].y+cRow<0||ps[i].y+cRow>21 || well[ps[i].y+cRow][ps[i].x+rcolumn]>0) {
                     blocked = true;
+                    break;
                 }
             }
         }
@@ -205,21 +288,29 @@ public class flattris extends AppCompatActivity {
         fillPiece();
     }
 
+    private void setGameRun(boolean b){
+        gamerun=b;
+    }
+
+    private void setGameStarted(boolean b){
+        gamestarted=b;
+    }
+
     private void initializeTopButtons(){
         ImageButton startGame =findViewById(R.id.bt1);
         startGame.setBackgroundColor(0xFFEEEEEE);
         startGame.setImageResource(R.drawable.ic_baseline_play_circle_outline_24);
         startGame.setOnClickListener(new View.OnClickListener(){
-            boolean gamerun=false;
-            boolean gamestarted =false;
+
+
             @Override
             public void onClick(View v) {
                 //Log.println(Log.DEBUG,"start" ,"Button clicked" );
                 if (!gamerun && !gamestarted){
                     // starts the game
                     runGame(savedInstanceState);
-                    gamerun=true;
-                    gamestarted=true;
+                    setGameRun(true);
+                    setGameStarted(true);
                     startGame.setImageResource(R.drawable.ic_baseline_pause_circle_outline_24);
                 } else if (gamestarted){
                     //Log.println(Log.DEBUG,"pause" ,"attempted pause" );
@@ -227,11 +318,11 @@ public class flattris extends AppCompatActivity {
                     // set to pause
                     if (gamerun){
                         startGame.setImageResource(R.drawable.ic_baseline_play_circle_outline_24);
-                        gamerun=false;
+                        setGameRun(false);
                         mythread.pause=true;
                     } else {
                         startGame.setImageResource(R.drawable.ic_baseline_pause_circle_outline_24);
-                        gamerun=true;
+                        setGameRun(true);
                         synchronized (mythread) {
                             mythread.pause=false;
                             mythread.notify();
@@ -256,7 +347,7 @@ public class flattris extends AppCompatActivity {
         Settings.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                delay =0;
+
             }
         });
 
@@ -267,6 +358,48 @@ public class flattris extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //pause game and to to settings
+                if(mythread!=null){
+                    mythread.pause=true;
+                }
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        if(mythread!=null){
+                            mythread.pause=true;
+                        }
+                        new MaterialAlertDialogBuilder(flattris.this)
+                                .setTitle("High Score view")
+                                .setMessage("You have till now scored "+score+" points.")
+                                .setPositiveButton("Go back to game", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        if (mythread!=null) {
+                                            synchronized (mythread) {
+                                                mythread.pause = false;
+                                                mythread.notify();
+                                            }
+                                        }
+                                    }
+                                })
+                                .setNegativeButton("View Highscore", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        // now add to the highscore table:
+                                        Intent intent =new Intent(getApplicationContext(),HighScore.class);
+                                        intent.putExtra("Score", score);
+                                        intent.putExtra("GameMode",10);
+                                        startActivity(intent);
+                                        if (mythread!=null) {
+                                            synchronized (mythread) {
+                                                mythread.pause = false;
+                                                mythread.notify();
+                                            }
+                                        }
+                                    }
+                                })
+                                .show();
+
+                    }
+                });
             }
         });
 
@@ -360,7 +493,8 @@ public class flattris extends AppCompatActivity {
         for (int i=0;i<cPiece.value;i++) {
             Point p = cp[i];
             if (((cRow+p.y-1)>=0)&&(rcolumn+p.x>=0)) {
-                buttons[cRow + p.y - 1][rcolumn + p.x].setBackgroundColor(colors[cPiece.value]);
+                //buttons[cRow + p.y - 1][rcolumn + p.x].setBackgroundColor(colors[cPiece.value]);
+                buttons[cRow+p.y-1][rcolumn+p.x].setBackgroundResource(ButtonImages[cPiece.value]);
             }
         }
     }
@@ -370,12 +504,14 @@ public class flattris extends AppCompatActivity {
         for (int i=0;i<cPiece.value;i++) {
             Point p = cp[i];
             if (((cRow+p.y-1)>=0)&&(rcolumn+p.x>=0)) {
-                buttons[cRow + p.y - 1][rcolumn + p.x].setBackgroundColor(Color.TRANSPARENT);
+                //buttons[cRow + p.y - 1][rcolumn + p.x].setBackgroundColor(Color.TRANSPARENT);
+                buttons[cRow + p.y - 1][rcolumn+p.x].setBackgroundResource(ButtonImages[0]);
             }
         }
     }
 
     private Piece getNewPiece(int max){
+        Log.println(Log.DEBUG, "getting new piece", "max val" + max);
         int blocksize = (int)Math.floor(Math.random()*max);
         Point [][] sizeblocks = FlatrisBlocks[blocksize];
         int block = (int)Math.floor(Math.random()*sizeblocks.length);
@@ -404,7 +540,8 @@ public class flattris extends AppCompatActivity {
         topreached=false;
         for (int i=0;i<12;i++){
             for (int j=0; j<22;j++){
-                buttons[j][i].setBackgroundColor(Color.TRANSPARENT);
+                //buttons[j][i].setBackgroundColor(Color.TRANSPARENT);
+                buttons[j][i].setBackgroundResource(R.drawable.ic_f0);
                 well[j][i]=0;
             }
         }
@@ -724,15 +861,64 @@ public class flattris extends AppCompatActivity {
         }
     }
 
+    private boolean checkNeighbours(Point [] checkP){
+        if (cPiece.value==1){
+            return true;
+        }
+        for (int i = 0; i < checkP.length; i++) {
+            Point p = checkP[i];
+                // we need to check already fixed cells around for their value
+                Log.println(Log.DEBUG, "Checking", "point" + (cRow + p.y) + ", col" + (rcolumn + p.x));
+                if ( cRow+1+p.y<22 && well[cRow +1+ p.y][rcolumn + p.x] == cPiece.value-1){
+                    return true;
+                } else if (cRow-1+p.y>=0 &&well[cRow -1+ p.y][rcolumn + p.x] == cPiece.value-1){
+                    return true;
+                } else if (rcolumn-1+p.x>=0&&well[cRow + p.y][rcolumn -1+ p.x] == cPiece.value-1){
+                    Log.println(Log.DEBUG, "Checking left", "point" + (cRow + p.y) + ", col" + (rcolumn -1+ p.x));
+                    return true;
+                } else if (rcolumn+1+p.x<12&&well[cRow + p.y][rcolumn +1+ p.x] == cPiece.value-1){
+                    return true;
+                }
+        }
+        nLives-=1;
+        Button Lives =findViewById(R.id.bt3);
+        Lives.setText(""+nLives);
+        if (nLives==0){
+            int tscore =0;
+            for (int i=0;i<22;i++){
+                for (int j=0;j<12;j++){
+                    score +=well[i][j];
+                    tscore+=well[i][j];
+                }
+            }
+            showEndMessage(tscore);
+        }
+        return false;
+    }
+
     private void fixBlock(Point [] toFix){
         //checkneighbours here
-        for (int i=0;i<toFix.length;i++) {
-            Point p = toFix[i];
-            well[cRow + p.y][rcolumn + p.x] = cPiece.value;
-           // Log.println(Log.DEBUG, "set 1", "setting row" + (cRow + p.y) + ", col" + (rcolumn + p.x));
-            if (cRow + p.y == 0) {
-                topreached = true;
+        boolean fix = checkNeighbours(toFix);
+        if (fix) {
+            int cmax=0;
+            for (int i=0;i<22;i++){
+                for (int j=0;j<12;j++){
+                    if (well[i][j]>cmax){
+                        cmax=well[i][j];
+                    }
+                }
             }
+            maxWell=Math.min(cmax+1,9);
+            for (int i = 0; i < toFix.length; i++) {
+                Point p = toFix[i];
+                well[cRow + p.y][rcolumn + p.x] = cPiece.value;
+                // Log.println(Log.DEBUG, "set 1", "setting row" + (cRow + p.y) + ", col" + (rcolumn + p.x));
+                if (cRow + p.y == 0) {
+                    topreached = true;
+                }
+            }
+        } else {
+            repaint();
         }
         // check full lines here
         ArrayList<Integer> remove = checkFullRows();
@@ -765,9 +951,14 @@ public class flattris extends AppCompatActivity {
             count++;
         }
         //repaint needs to be done
+        repaint();
+    }
+
+    private void repaint(){
         for (int i=0;i<22;i++){
             for (int j=0;j<12;j++){
-                buttons[i][j].setBackgroundColor(colors[well[i][j]]);
+                //buttons[i][j].setBackgroundColor(colors[well[i][j]]);
+                buttons[i][j].setBackgroundResource(ButtonImages[well[i][j]]);
             }
         }
     }
@@ -776,17 +967,73 @@ public class flattris extends AppCompatActivity {
         ArrayList<Integer> fullrows = new ArrayList<Integer>();
         for (int i=0;i<well.length;i++){
             int count=0;
+            int tscore=0;
             for (int j=0;j<well[0].length;j++){
                 if (well[i][j]>0){
                     count++;
+                    tscore+=well[i][j];
                 }
             }
             if (count==12){
-                Log.println(Log.DEBUG, "Full row found", "row" +i);
+                score+=tscore;
                 fullrows.add(i);
             }
         }
         return fullrows;
+    }
+    private void showEndMessage(int tscore){
+        // game over. show game over graphic
+//        Looper.prepare();
+        runOnUiThread(new Runnable() {
+            public void run() {
+
+                //your alert dialog here..
+
+
+        new MaterialAlertDialogBuilder(flattris.this)
+                .setTitle("Game Over")
+                .setMessage("You have just scored "+score+" points.")
+                .setPositiveButton("Watch add four 1 life", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        nLives+=1;
+                        Button Lives =findViewById(R.id.bt3);
+                        Lives.setText(""+nLives);
+                        score-=tscore;
+                        synchronized (mythread) {
+                            mythread.pause=false;
+                            mythread.notify();
+                        }
+                    }
+                })
+                .setNegativeButton("Quit game", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //mythread.interrupt();
+                        gamerun=false;
+                        gamestarted=false;
+                        nLives=5;
+                        Button Lives =findViewById(R.id.bt3);
+                        Lives.setText(""+nLives);
+                        for (int k=0;k<22;k++){
+                            for (int l=0;l<12;l++){
+                                well[k][l]=0;
+                            }
+                        }
+                        repaint();
+                        ImageButton startGame =findViewById(R.id.bt1);
+                        startGame.setImageResource(R.drawable.ic_baseline_play_circle_outline_24);
+                        // now add to the highscore table:
+                        Intent intent =new Intent(getApplicationContext(),HighScore.class);
+                        intent.putExtra("Score", score);
+                        intent.putExtra("GameMode",0);
+                        Log.println(Log.DEBUG,"done","val" +score);
+                        startActivity(intent);
+                    }
+                })
+                .show();
+            }
+        });
     }
 
     private class FlatThread extends Thread{
@@ -795,11 +1042,12 @@ public class flattris extends AppCompatActivity {
 
         public void run(){
             topreached=false;
+            score=0;
             pieceFalling=false;
             maxWell=1;
             cPiece = getNewPiece(maxWell);
             rcolumn=5;
-            while (topreached ==false){
+            while (topreached ==false ){ // split to set pause from this thread?
                 synchronized (this) {
                     if (pause) {
                         try {
@@ -808,51 +1056,61 @@ public class flattris extends AppCompatActivity {
                         }
                     }
                 }
-                if (pieceFalling==false){
-                    cRow=0;
-                    cPiece = getNewPiece(maxWell);
-                    rcolumn = (int)(Math.floor(Math.random()*5)+Math.floor(Math.random()*5))+1;
-                    pieceFalling=true;
-                }
-                try{
-                    Thread.sleep(delay);
-                    Point [] cp = cPiece.block;
-                    //Log.println(Log.DEBUG,"done","val" +cPiece.value);
-                    if (cRow>0){ // clear previous drawing
-                        clearPiece();
+                if (nLives>0) {
+                    if (pieceFalling == false) {
+                        cRow = 0;
+                        cPiece = getNewPiece(maxWell);
+                        rcolumn = (int) (Math.floor(Math.random() * 5) + Math.floor(Math.random() * 5)) + 1;
+                        pieceFalling = true;
                     }
-                    for (int i=0;i<cPiece.value;i++) {
-                        Point p = cp[i];
-                        if (((cRow+p.y)>=0)&&(rcolumn+p.x>=0)){
-                            buttons[cRow + p.y][rcolumn + p.x].setBackgroundColor(colors[cPiece.value]);
+                    try {
+                        Thread.sleep(delay);
+                        Point[] cp = cPiece.block;
+                        //Log.println(Log.DEBUG,"done","val" +cPiece.value);
+                        if (cRow > 0) { // clear previous drawing
+                            clearPiece();
+                        }
+                        for (int i = 0; i < cPiece.value; i++) {
+                            Point p = cp[i];
+                            if (((cRow + p.y) >= 0) && (rcolumn + p.x >= 0)) {
+                                //buttons[cRow + p.y][rcolumn + p.x].setBackgroundColor(colors[cPiece.value]);
+                                buttons[cRow+p.y][rcolumn+p.x].setBackgroundResource(ButtonImages[cPiece.value]);
+                            }
+                        }
+
+
+                    } catch (InterruptedException e) {
+                    }
+                    if (cRow > 20) {
+                        //topreached=true;
+
+                        pieceFalling = false;
+
+                        Point[] cp = cPiece.block;
+                        fixBlock(cp);
+                        cRow = 0;
+                        delay = 1000;
+                    } else {
+                        pieceFalling = !checkBelow(cPiece, cRow, rcolumn);
+                        if (!pieceFalling && cRow == 0) {
+                            topreached = true;
+                        } else if (!pieceFalling) {
+                            cRow = 0;
+                            delay = 1000;
                         }
                     }
-
-
-                } catch (InterruptedException e){
-                }
-                if (cRow>20){
-                    //topreached=true;
-
-                    pieceFalling=false;
-                    maxWell=Math.min(cPiece.value+1,9);
-                    Point [] cp = cPiece.block;
-                    fixBlock(cp);
-                    cRow=0;
-                    delay=250;
+                    cRow += 1;
                 } else {
-                    pieceFalling = !checkBelow(cPiece, cRow, rcolumn);
-                    if(!pieceFalling && cRow==0){
-                        topreached=true;
-                    } else if (!pieceFalling){
-                        cRow=0;
-                        delay=1000;
-                    }
+                    this.pause=true;
                 }
-                cRow+=1;
             }
-
+            mHandler.post(new Runnable() {
+                public void run(){
+                    showEndMessage(0);
+                }
+            });
         }
+
     }
 }
 

@@ -12,4 +12,21 @@
     <string name="md">Move down</string>
     <string name="mr">Move right</string>
     <string name="tr">Turn right</string>
+    <string name="title_activity_high_score">HighScore</string>
+    <string name="InfHigh">Infinity</string>
+    <string name="Con1">Not set</string>
+    <string name="Con2">Not set</string>
+    <string name="Con3">Not set</string>
+    <string name="Inf1">Not set</string>
+    <string name="Inf2">Not set</string>
+    <string name="Inf3">Not set</string>
+    <string name="Cha1">Not set</string>
+    <string name="Cha2">Not set</string>
+    <string name="Cha3">Not set</string>
+    <string name="ConHigh">Construction</string>
+    <string name="ChaHigh">Challenge</string>
+    <string name="ExitHigh">Back to game</string>
+    <string name="ResetHigh">Reset Highscore</string>
+    <string name="blank"></string>
+
 </resources>

@@ -1,22 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.flattris">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="willemse.flattris">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:fullBackupContent="true"
+        android:icon="@drawable/towerfail"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:fullBackupContent="true"
-        android:theme="@style/Theme.FlatTris">
-        <activity android:name=".HighScore"></activity>
-        <activity android:name=".flattris">
+        android:theme="@style/Theme.FlatTris"
+        android:screenOrientation="portrait"
+        >
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-5016844590127964~4228303596"
+            />
+
+
+        <activity android:name="Willemse.restart"></activity>
+        <activity android:name="Willemse.Settings" />
+        <activity android:name="Willemse.HighScore" />
+        <activity android:name="Willemse.anotherflattris">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data android:name="com.google.android.gms.games.APP_ID"
+            android:value="@string/app_id" />
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+
     </application>
 
 </manifest>

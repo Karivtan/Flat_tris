@@ -3,14 +3,12 @@
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_game_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00000000"
     android:paddingTop="0dp">
 
     <GridLayout
-        android:id="@+id/GridLayoutTop"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_gravity="fill_vertical|fill_horizontal"
@@ -69,15 +67,16 @@
     </GridLayout>
 
     <GridLayout
-        android:id="@+id/GridLayoutGame2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnCount="12"
-        android:rowCount="22"
         android:layout_marginBottom="70dp"
         android:layout_marginTop="70dp"
+        android:background="#F0F0F0"
+        android:columnCount="12"
+        android:rowCount="22"
         tools:context="GridXMLActivity"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="70dp">
 
         <ImageButton
             android:id="@+id/r0c0"
@@ -86,6 +85,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -94,6 +94,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -102,6 +103,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -110,6 +112,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -118,6 +121,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -126,6 +130,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -134,6 +139,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -142,6 +148,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -150,6 +157,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -158,6 +166,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -166,6 +175,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -174,6 +184,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -182,6 +193,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -190,6 +202,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -198,6 +211,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -206,6 +220,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -214,6 +229,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -222,6 +238,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -230,6 +247,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -238,6 +256,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -247,6 +266,7 @@
             android:layout_column="0"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -255,6 +275,7 @@
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -263,6 +284,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -271,6 +293,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -279,6 +302,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -287,6 +311,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -295,6 +320,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -303,6 +329,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -311,6 +338,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -319,6 +347,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -327,6 +356,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -335,6 +365,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -343,6 +374,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -351,6 +383,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -359,6 +392,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -367,6 +401,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -375,6 +410,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -383,6 +419,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -391,6 +428,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -399,6 +437,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -407,6 +446,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -415,6 +455,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -424,6 +465,7 @@
             android:layout_column="1"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -432,6 +474,7 @@
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -440,6 +483,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -448,6 +492,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -456,6 +501,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -464,6 +510,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -472,6 +519,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -480,6 +528,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -488,6 +537,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -496,6 +546,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -504,6 +555,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -512,6 +564,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -520,6 +573,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -528,6 +582,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -536,6 +591,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -544,6 +600,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -552,6 +609,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -560,6 +618,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -568,6 +627,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -576,6 +636,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -584,6 +645,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -592,6 +654,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -601,6 +664,7 @@
             android:layout_column="2"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -609,6 +673,7 @@
             android:layout_rowWeight="1"
             android:layout_column="2"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -617,6 +682,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -625,6 +691,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -633,6 +700,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -641,6 +709,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -649,6 +718,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -657,6 +727,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -665,6 +736,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -673,6 +745,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -681,6 +754,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -689,6 +763,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -697,6 +772,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -705,6 +781,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -713,6 +790,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -721,6 +799,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -729,6 +808,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -737,6 +817,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -745,6 +826,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -753,6 +835,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -761,6 +844,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -769,6 +853,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -778,6 +863,7 @@
             android:layout_column="3"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -786,6 +872,7 @@
             android:layout_rowWeight="1"
             android:layout_column="3"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -794,6 +881,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -802,6 +890,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -810,6 +899,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -818,6 +908,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -826,6 +917,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -834,6 +926,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -842,6 +935,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -850,6 +944,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -858,6 +953,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -866,6 +962,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -874,6 +971,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -882,6 +980,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -890,6 +989,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -898,6 +998,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -906,6 +1007,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -914,6 +1016,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -922,6 +1025,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -930,6 +1034,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -938,6 +1043,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -946,6 +1052,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -955,6 +1062,7 @@
             android:layout_column="4"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -963,6 +1071,7 @@
             android:layout_rowWeight="1"
             android:layout_column="4"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -971,6 +1080,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -979,6 +1089,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -987,6 +1098,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -995,6 +1107,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1003,6 +1116,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1011,6 +1125,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1019,6 +1134,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1027,6 +1143,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1035,6 +1152,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1043,6 +1161,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1051,6 +1170,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1059,6 +1179,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1067,6 +1188,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1075,6 +1197,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1083,6 +1206,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1091,6 +1215,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1099,6 +1224,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1107,6 +1233,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1115,6 +1242,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1123,6 +1251,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1132,6 +1261,7 @@
             android:layout_column="5"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1140,6 +1270,7 @@
             android:layout_rowWeight="1"
             android:layout_column="5"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1148,6 +1279,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1156,6 +1288,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1164,6 +1297,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1172,6 +1306,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1180,6 +1315,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1188,6 +1324,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1196,6 +1333,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1204,6 +1342,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1212,6 +1351,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1220,6 +1360,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1228,6 +1369,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1236,6 +1378,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1244,6 +1387,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1252,6 +1396,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1260,6 +1405,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1268,6 +1414,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1276,6 +1423,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1284,6 +1432,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1292,6 +1441,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1300,6 +1450,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1309,6 +1460,7 @@
             android:layout_column="6"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1317,6 +1469,7 @@
             android:layout_rowWeight="1"
             android:layout_column="6"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1325,6 +1478,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1333,6 +1487,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1341,6 +1496,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1349,6 +1505,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1357,6 +1514,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1365,6 +1523,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1373,6 +1532,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1381,6 +1541,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1389,6 +1550,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1397,6 +1559,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1405,6 +1568,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1413,6 +1577,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1421,6 +1586,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1429,6 +1595,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1437,6 +1604,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1445,6 +1613,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1453,6 +1622,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1461,6 +1631,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1469,6 +1640,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1477,6 +1649,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1486,6 +1659,7 @@
             android:layout_column="7"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1494,6 +1668,7 @@
             android:layout_rowWeight="1"
             android:layout_column="7"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1502,6 +1677,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1510,6 +1686,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1518,6 +1695,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1526,6 +1704,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1534,6 +1713,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1542,6 +1722,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1550,6 +1731,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1558,6 +1740,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1566,6 +1749,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1574,6 +1758,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1582,6 +1767,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1590,6 +1776,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1598,6 +1785,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1606,6 +1794,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1614,6 +1803,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1622,6 +1812,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1630,6 +1821,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1638,6 +1830,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1646,6 +1839,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1654,6 +1848,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1663,6 +1858,7 @@
             android:layout_column="8"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1671,6 +1867,7 @@
             android:layout_rowWeight="1"
             android:layout_column="8"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1679,6 +1876,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1687,6 +1885,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1695,6 +1894,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1703,6 +1903,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1711,6 +1912,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1719,6 +1921,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1727,6 +1930,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1735,6 +1939,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1743,6 +1948,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1751,6 +1957,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1759,6 +1966,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1767,6 +1975,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1775,6 +1984,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1783,6 +1993,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1791,6 +2002,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1799,6 +2011,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1807,6 +2020,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1815,6 +2029,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1823,6 +2038,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1831,6 +2047,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1840,6 +2057,7 @@
             android:layout_column="9"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1848,6 +2066,7 @@
             android:layout_rowWeight="1"
             android:layout_column="9"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1856,6 +2075,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1864,6 +2084,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1872,6 +2093,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1880,6 +2102,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1888,6 +2111,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1896,6 +2120,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1904,6 +2129,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1912,6 +2138,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1920,6 +2147,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1928,6 +2156,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1936,6 +2165,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1944,6 +2174,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1952,6 +2183,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1960,6 +2192,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1968,6 +2201,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1976,6 +2210,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1984,6 +2219,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -1992,6 +2228,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2000,6 +2237,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2008,6 +2246,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2017,6 +2256,7 @@
             android:layout_column="10"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2025,6 +2265,7 @@
             android:layout_rowWeight="1"
             android:layout_column="10"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2033,6 +2274,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2041,6 +2283,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2049,6 +2292,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2057,6 +2301,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2065,6 +2310,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2073,6 +2319,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2081,6 +2328,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2089,6 +2337,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2097,6 +2346,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2105,6 +2355,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2113,6 +2364,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2121,6 +2373,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2129,6 +2382,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2137,6 +2391,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2145,6 +2400,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2153,6 +2409,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2161,6 +2418,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2169,6 +2427,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2177,6 +2436,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2185,6 +2445,7 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2194,6 +2455,7 @@
             android:layout_column="11"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
 
         <ImageButton
@@ -2202,11 +2464,11 @@
             android:layout_rowWeight="1"
             android:layout_column="11"
             android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_margin="1dp"
             android:layout_weight="1" />
     </GridLayout>
 
     <GridLayout
-        android:id="@+id/GridLayoubuttons"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_gravity="bottom|fill_horizontal|fill_vertical"

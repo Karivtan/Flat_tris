@@ -1,32 +1,36 @@
 <resources>
-    <string name="app_name">FlatTris</string>
-    <string name="title_home">Exit</string>
-    <string name="title_dashboard">Play Game</string>
-    <string name="title_notifications">Settings</string>
-    <string name="Settings_Button_1">Sound on/off</string>
-    <string name="Sound_off">Sound off</string>
-    <string name="Sound_on">Sound on</string>
-    <string name="Start">Start</string>
-    <string name="tl">Turn left</string>
-    <string name="ml">Move left</string>
-    <string name="md">Move down</string>
-    <string name="mr">Move right</string>
-    <string name="tr">Turn right</string>
+    <string name="app_name" translatable="false">flattris</string>
+    <string name="Game_over">Game Over</string>
     <string name="title_activity_high_score">HighScore</string>
     <string name="InfHigh">Infinity</string>
-    <string name="Con1">Not set</string>
-    <string name="Con2">Not set</string>
-    <string name="Con3">Not set</string>
-    <string name="Inf1">Not set</string>
-    <string name="Inf2">Not set</string>
-    <string name="Inf3">Not set</string>
-    <string name="Cha1">Not set</string>
-    <string name="Cha2">Not set</string>
-    <string name="Cha3">Not set</string>
     <string name="ConHigh">Construction</string>
     <string name="ChaHigh">Challenge</string>
     <string name="ExitHigh">Back to game</string>
     <string name="ResetHigh">Reset Highscore</string>
-    <string name="blank"></string>
+    <string name="Music">Music</string>
+    <string name="Blieps">Game sounds</string>
+    <string name="Sounds">Sound settings</string>
+    <string name="GameS">Game settings</string>
+    <string name="GameM1">Infinity mode (easy)</string>
+    <string name="GameM2">Challenge mode (medium)</string>
+    <string name="GameM3">Construction mode (difficult)</string>
+    <string name="Speedsettings">Speed increment</string>
+    <string name="Instructions">View instructions</string>
+    <string name="PrivInfo">Privacy Information</string>
+    <string name="Score1">You have just scored </string>
+    <string name="Score2">Points.</string>
+    <string name="WatchAd">Watch ad for 1 life</string>
+    <string name="WatchAd2">Watch ad to remove 10 lines</string>
+    <string name="Quit">Quit game</string>
+    <string name="PrivString">This app does not store any information or send any data over internet. Settings and Highscores are saved locally</string>
+    <string name="InstrString">
+        Flattris is a Tetris variant using a 3x3 block size at max. All possible blocks ranging from 1x1 to 3x3 are possible to find in the game. Build a flat as high as possible for most points.\n\n
+        Flattris has 3 game modes:\n\t
+        Infinity Mode, meaning each block can be placed anywhere, score points for rows removed, the game finishes when the top of the screen is reached\n\n\t
+        Challenge Mode, each block can only be placed where there is a neighbour that is one size smaller than the block you try to place. Thus size 2 blocks can only be placed next to size 1 blocks, Size 3 blocks can only be placed next to size 2 blocks\n\n\t
+        Construction Mode,  each block can only be placed where all lower valued neighbour are present Thus size 2 blocks can only be placed next to size 1 blocks, Size 3 blocks can only be placed next to both a size 2 and a size one block\n\n\t
+        Speed increment means that each time a row is removed blocks start falling faster.\n\n\t
+        The more difficult the game mode the more points you score, bigger blocks also score more points, and finally having the speed increment on will also award more points.
+    </string>
 
 </resources>

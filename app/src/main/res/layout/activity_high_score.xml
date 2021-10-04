@@ -5,10 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HighScore">
+    tools:context="Willemse.flattris.com.example.HighScore">
 
     <TextView
-        android:id="@+id/Highscore"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -19,7 +18,6 @@
         android:textColor="#3F51B5" />
 
     <TextView
-        android:id="@+id/InfScoreHead"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -36,7 +34,7 @@
         android:layout_weight="1"
         android:gravity="center_horizontal|center_vertical"
         android:textColor="#326432"
-        android:text="@string/Inf1" />
+        />
 
     <TextView
         android:id="@+id/Inf2"
@@ -45,7 +43,7 @@
         android:layout_weight="1"
         android:gravity="center_horizontal|center_vertical"
         android:textColor="#326432"
-        android:text="@string/Inf2" />
+        />
 
     <TextView
         android:id="@+id/Inf3"
@@ -54,10 +52,9 @@
         android:layout_weight="1"
         android:gravity="center_horizontal|center_vertical"
         android:textColor="#326432"
-        android:text="@string/Inf3" />
+        />
 
     <TextView
-        android:id="@+id/ChScoreHead"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -73,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center_horizontal|center_vertical"
-        android:text="@string/Cha1" />
+        />
 
     <TextView
         android:id="@+id/Ch2"
@@ -81,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center_horizontal|center_vertical"
-        android:text="@string/Cha2" />
+        />
 
     <TextView
         android:id="@+id/Ch3"
@@ -89,10 +86,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center_horizontal|center_vertical"
-        android:text="@string/Cha3" />
+         />
 
     <TextView
-        android:id="@+id/ConScoreHead"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -108,7 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center_horizontal|center_vertical"
-        android:text="@string/Con1" />
+        />
 
     <TextView
         android:id="@+id/Con2"
@@ -116,7 +112,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center_horizontal|center_vertical"
-        android:text="@string/Con2" />
+        />
 
     <TextView
         android:id="@+id/Con3"
@@ -124,7 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center_horizontal|center_vertical"
-        android:text="@string/Con3" />
+         />
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,7 +1,7 @@
 package Willemse;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Point;
@@ -13,38 +13,30 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.OnPaidEventListener;
-import com.google.android.gms.ads.OnUserEarnedRewardListener;
-import com.google.android.gms.ads.ResponseInfo;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-import com.google.android.gms.ads.rewarded.OnAdMetadataChangedListener;
-import com.google.android.gms.ads.rewarded.RewardItem;
-import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
-import com.google.android.gms.ads.rewarded.ServerSideVerificationOptions;
-import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd;
-import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAdLoadCallback;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import java.util.ArrayList;
-import willemse.flattris.R;
 import com.google.android.gms.ads.rewarded.RewardedAd;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
+import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import java.util.ArrayList;
+
+import willemse.flattris.R;
+
+
+@SuppressWarnings({"SynchronizeOnNonFinalField", "UnnecessaryLocalVariable", "SameParameterValue", "unused", "SingleStatementInBlock", "ForLoopReplaceableByWhile", "Convert2Diamond", "FieldCanBeLocal", "FieldMayBeFinal"})
 public class anotherflattris extends AppCompatActivity  {
     private RewardedInterstitialAd rewardedInterstitialAd;
     private static int reward=0;
@@ -52,7 +44,12 @@ public class anotherflattris extends AppCompatActivity  {
     public static final String SettingsFile = "FlatTrisSettings";
     private int[][] well = new int[22][12];
     private Point pieceOrigin;
-    private int rotation, rcolumn, nLives, maxWell, score, gameMode;
+    private int rotation;
+    private int rcolumn;
+    private int nLives;
+    private int maxWell;
+    private int score;
+    private int gameMode;
     private int cRow=0;
     private ImageButton [][] buttons;
     private FlatThread mythread;
@@ -150,7 +147,6 @@ public class anotherflattris extends AppCompatActivity  {
     }
 
     /*
-     *         TODO: add commercials
      *                todo: add google play achievements
      */
 
@@ -159,11 +155,10 @@ public class anotherflattris extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         this.savedInstanceState = savedInstanceState;
         setContentView(R.layout.activity_main);
-
         // for add initialization
         AdRequest adRequest = new AdRequest.Builder().build();
 
-        RewardedAd.load(this, "ca-app-pub-5016844590127964/4240600242",
+        RewardedAd.load(this, "ca-app-pub-5016844590127964/7342111549",
                 adRequest, new RewardedAdLoadCallback() {
                     @Override
                     public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
@@ -231,7 +226,7 @@ public class anotherflattris extends AppCompatActivity  {
     public void loadaddhere(){
         AdRequest adRequest = new AdRequest.Builder().build();
         this.mRewardedAd=null;
-        RewardedAd.load(this, "ca-app-pub-5016844590127964/4240600242",
+        RewardedAd.load(this, "ca-app-pub-5016844590127964/7342111549",
                 adRequest, new RewardedAdLoadCallback() {
                     @Override
                     public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
@@ -270,6 +265,7 @@ public class anotherflattris extends AppCompatActivity  {
                 });
     }
 
+    @SuppressLint("ApplySharedPref")
     public void loadSettings(){
         SharedPreferences settings = getSharedPreferences(SettingsFile, MODE_PRIVATE);
         SharedPreferences.Editor e = settings.edit();
@@ -358,16 +354,16 @@ public class anotherflattris extends AppCompatActivity  {
 
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private boolean checkHorizontal(int move){
         // where does cRow come from?
         // this needs to check is there are already blocks below the current one dropping
         boolean blocked=false;
         Point[] p =cPiece.block;
         Log.println(Log.DEBUG,"block check at" +cPiece.value,"checking row" +cRow+", col" +(rcolumn+move));
-        for (int i=0;i<p.length;i++){
-            Point cp=p[i];
-            if (cRow>0) {
-                if (cRow-1+cp.y>0 && rcolumn+move+cp.x>0 && rcolumn+move+cp.x<12) {
+        for (Point cp : p) {
+            if (cRow > 0) {
+                if (cRow - 1 + cp.y > 0 && rcolumn + move + cp.x > 0 && rcolumn + move + cp.x < 12) {
                     if (well[cRow - 1 + cp.y][rcolumn + move + cp.x] > 0) {
                         Log.println(Log.DEBUG, "blocked at" + cPiece.value, "checking row" + cRow + ", col" + (rcolumn + move));
                         blocked = true;
@@ -413,20 +409,20 @@ public class anotherflattris extends AppCompatActivity  {
         cPiece.block=ps;
         cPiece.calculateMaxMin();
         //Log.println(Log.DEBUG,"rotating" +cPiece.value,"max" +(cPiece.maxX+rcolumn)+", min" +(rcolumn+cPiece.minX));
-        if (cPiece.maxX+rcolumn>11 ||cPiece.minX+rcolumn<0){
-            blocked=true;
-            //Log.println(Log.DEBUG,"blocking turn" +cPiece.value,"max" +(cPiece.maxX+rcolumn)+", min" +(rcolumn+cPiece.minX));
+        //Log.println(Log.DEBUG,"blocking turn" +cPiece.value,"max" +(cPiece.maxX+rcolumn)+", min" +(rcolumn+cPiece.minX));
+        if (cPiece.maxX+rcolumn>11 ||cPiece.minX+rcolumn<0) {
+            blocked = true;
         }
-        if (!blocked){
-            for (int i=0;i<ps.length;i++) {
-                if (ps[i].y+cRow<0||well[ps[i].y+cRow][ps[i].x+rcolumn]>0) {
+        if (!blocked) {
+            for (Point p : ps) {
+                if (p.y + cRow < 0 || well[p.y + cRow][p.x + rcolumn] > 0) {
                     blocked = true;
                     break;
                 }
             }
         }
-        if (blocked){
-            cPiece.block=oldps;
+        if (blocked) {
+            cPiece.block = oldps;
         }
         fillPiece();
     }
@@ -465,23 +461,24 @@ public class anotherflattris extends AppCompatActivity  {
         cPiece.block=ps;
         cPiece.calculateMaxMin();
         //Log.println(Log.DEBUG,"rotating" +cPiece.value,"max" +(cPiece.maxX+rcolumn)+", min" +(rcolumn+cPiece.minX));
-        if (cPiece.maxX+rcolumn>11 ||cPiece.minX+rcolumn<0){
-            blocked=true;
-            //Log.println(Log.DEBUG,"blocking turn" +cPiece.value,"max" +(cPiece.maxX+rcolumn)+", min" +(rcolumn+cPiece.minX));
+        //Log.println(Log.DEBUG,"blocking turn" +cPiece.value,"max" +(cPiece.maxX+rcolumn)+", min" +(rcolumn+cPiece.minX));
+        if (cPiece.maxX+rcolumn>11 ||cPiece.minX+rcolumn<0) {
+            blocked = true;
         }
-        if (!blocked){
-            for (int i=0;i<ps.length;i++) {
-                if (ps[i].y+cRow<0||ps[i].y+cRow>21 || well[ps[i].y+cRow][ps[i].x+rcolumn]>0) {
+        if (!blocked) {
+            for (Point p : ps) {
+                if (p.y + cRow < 0 || p.y + cRow > 21 || well[p.y + cRow][p.x + rcolumn] > 0) {
                     blocked = true;
                     break;
                 }
             }
         }
-        if (blocked){
-            cPiece.block=oldps;
+        if (blocked) {
+            cPiece.block = oldps;
         }
         fillPiece();
     }
+    @SuppressLint("SetTextI18n")
     public void setNLivesButton(boolean restart){
         Button Lives =findViewById(R.id.bt3);
         // read in gameMode
@@ -509,28 +506,27 @@ public class anotherflattris extends AppCompatActivity  {
         gamestarted=b;
     }
 
+    @SuppressLint("SetTextI18n")
     private void initializeTopButtons(){
         ImageButton startGame =findViewById(R.id.bt1);
         startGame.setBackgroundColor(0xFFEEEEEE);
         startGame.setImageResource(R.drawable.ic_baseline_play_circle_outline_24);
-        startGame.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                //Log.println(Log.DEBUG,"start" ,"Button clicked" );
-                if (!gamerun && !gamestarted){
-                    // starts the game
-                    runGame(savedInstanceState);
-                    setGameRun(true);
-                    setGameStarted(true);
-                    startGame.setImageResource(R.drawable.ic_baseline_pause_circle_outline_24);
-                } else if (gamestarted){
-                    //Log.println(Log.DEBUG,"pause" ,"attempted pause" );
-                    //Log.println(Log.DEBUG,"start" ,""+mythread.pause );
-                    // set to pause
-                    if (gamerun){
+        startGame.setOnClickListener(v -> {
+            //Log.println(Log.DEBUG,"start" ,"Button clicked" );
+            if (!gamerun && !gamestarted){
+                // starts the game
+                runGame(savedInstanceState);
+                setGameRun(true);
+                setGameStarted(true);
+                startGame.setImageResource(R.drawable.ic_baseline_pause_circle_outline_24);
+            } else //Log.println(Log.DEBUG,"pause" ,"attempted pause" );
+                //Log.println(Log.DEBUG,"start" ,""+mythread.pause );
+                // set to pause
+                if (gamestarted) {
+                    if (gamerun) {
                         startGame.setImageResource(R.drawable.ic_baseline_play_circle_outline_24);
                         setGameRun(false);
-                        mythread.pause=true;
+                        mythread.pause = true;
                     } else {
                         startGame.setImageResource(R.drawable.ic_baseline_pause_circle_outline_24);
                         setGameRun(true);
@@ -543,18 +539,15 @@ public class anotherflattris extends AppCompatActivity  {
                                     mplayer.setLooping(true);
                                     mplayer.start();
                                 }
-                            } else {
-                                if(!playMusic){
-                                    mplayer.pause();
-                                }
+                            } else if (!playMusic) {
+                                mplayer.pause();
                             }
 
-                            mythread.pause=false;
+                            mythread.pause = false;
                             mythread.notify();
                         }
                     }
                 }
-            }
         });
 
        setNLivesButton(false);
@@ -563,133 +556,112 @@ public class anotherflattris extends AppCompatActivity  {
         ImageButton Settings =findViewById(R.id.bt2);
         Settings.setBackgroundColor(0xFFEEEEEE);
         Settings.setImageResource(R.drawable.ic_baseline_settings_24);
-        Settings.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                if (gamerun){
-                    startGame.setImageResource(R.drawable.ic_baseline_play_circle_outline_24);
-                    setGameRun(false);
-                    mythread.pause=true;
-                }
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        if (mythread != null) {
-                            mythread.pause = true;
-                        }
-                        Intent intent =new Intent(getApplicationContext(), Willemse.Settings.class);
-                        startActivity(intent);
-                        Button Lives =findViewById(R.id.bt3);
-                        // read in gameMode
-                        if (gameMode==0) {
-                            nLives = 1;
-                            Lives.setText("∞");
-                        } else if (gameMode==1){
-                            nLives = 5;
-                            Lives.setText(""+nLives);
-                        } else {
-                            nLives = 9;
-                            Lives.setText(""+nLives);
-                        }
-                    }
-                });
+        Settings.setOnClickListener(v -> {
+            if (gamerun){
+                startGame.setImageResource(R.drawable.ic_baseline_play_circle_outline_24);
+                setGameRun(false);
+                mythread.pause=true;
             }
+            runOnUiThread(() -> {
+                if (mythread != null) {
+                    mythread.pause = true;
+                }
+                Intent intent = new Intent(getApplicationContext(), Willemse.Settings.class);
+                startActivity(intent);
+                Button Lives = findViewById(R.id.bt3);
+                // read in gameMode
+                if (gameMode == 0) {
+                    nLives = 1;
+                    Lives.setText("∞");
+                } else if (gameMode == 1) {
+                    nLives = 5;
+                    Lives.setText("" + nLives);
+                } else {
+                    nLives = 9;
+                    Lives.setText("" + nLives);
+                }
+            });
         });
 
         ImageButton Instr =findViewById(R.id.bt4);
         Instr.setBackgroundColor(0xFFEEEEEE);
         Instr.setImageResource(R.drawable.ic_baseline_text_snippet_24);
-        Instr.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
+        Instr.setOnClickListener(v -> {
 
-                if (gamerun){
-                    startGame.setImageResource(R.drawable.ic_baseline_play_circle_outline_24);
-                    setGameRun(false);
-                    mythread.pause=true;
-                }
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        if(mythread!=null){
-                            mythread.pause=true;
-                        }
-                        int tscore =0;
-                        for (int i=0;i<22;i++){
-                            for (int j=0;j<12;j++){
-                                tscore+=well[i][j]*(gameMode+1);
-                            }
-                        }
-                        if (delay!=0) {
-                            tscore += (1000 - delay);
-                        } else {
-                            tscore +=(1000-prevDelay);
-                        }
-                        new MaterialAlertDialogBuilder(anotherflattris.this)
-                            .setTitle("High Score view")
-                            .setMessage("You have till now scored "+(score+tscore)+" points.")
-                            .setPositiveButton("Go back to game", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    if (mythread!=null) {
-                                        synchronized (mythread) {
-                                            mythread.pause = false;
-                                            mythread.notify();
-                                        }
-                                    }
-                                }
-                            })
-                            .setNegativeButton("View Highscore", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    // now add to the highscore table:
-                                    Intent intent =new Intent(getApplicationContext(), HighScore.class);
-                                    intent.putExtra("Score", score);
-                                    intent.putExtra("GameOver",0);
-                                    intent.putExtra("GameMode", gameMode);
-                                    startActivity(intent);
-                                }
-                            })
-                            .show();
-                    }
-                });
+            if (gamerun){
+                startGame.setImageResource(R.drawable.ic_baseline_play_circle_outline_24);
+                setGameRun(false);
+                mythread.pause=true;
             }
+            runOnUiThread(() -> {
+                if (mythread != null) {
+                    mythread.pause = true;
+                }
+                int tscore = 0;
+                for (int i = 0; i < 22; i++) {
+                    for (int j = 0; j < 12; j++) {
+                        tscore += well[i][j] * (gameMode + 1);
+                    }
+                }
+                if (delay != 0) {
+                    tscore += (1000 - delay);
+                } else {
+                    tscore += (1000 - prevDelay);
+                }
+                new MaterialAlertDialogBuilder(anotherflattris.this)
+                        .setTitle("High Score view")
+                        .setMessage("You have till now scored " + (score + tscore) + " points.")
+                        .setPositiveButton("Go back to game", (dialogInterface, i) -> {
+                            if (mythread != null) {
+                                synchronized (mythread) {
+                                    mythread.pause = false;
+                                    mythread.notify();
+                                }
+                            }
+                        })
+                        .setNegativeButton("View Highscore", (dialogInterface, i) -> {
+                            // now add to the highscore table:
+                            Intent intent = new Intent(getApplicationContext(), HighScore.class);
+                            intent.putExtra("Score", score);
+                            intent.putExtra("GameOver", 0);
+                            intent.putExtra("GameMode", gameMode);
+                            startActivity(intent);
+                        })
+                        .show();
+            });
         });
 
         ImageButton Exit =findViewById(R.id.bt5);
         Exit.setBackgroundColor(0xFFEEEEEE);
         Exit.setImageResource(R.drawable.ic_baseline_exit_to_app_24);
-        Exit.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                if(mythread!=null){
-                    mythread.pause=true;
-                    mythread.interrupt();
-                }
-                Intent intent =new Intent(getApplicationContext(), restart.class);
-                startActivity(intent);
+        Exit.setOnClickListener(v -> {
+            if(mythread!=null){
+                mythread.pause=true;
+                mythread.interrupt();
             }
+            Intent intent =new Intent(getApplicationContext(), restart.class);
+            startActivity(intent);
         });
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void initializePressButtons(){
         ImageButton moveRight =findViewById(R.id.b4);
         moveRight.setBackgroundColor(0xFF224466);
         moveRight.setImageResource(R.drawable.ic_baseline_arrow_forward_24);
-        moveRight.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                if (cPiece!=null) {
-                    if (rcolumn + cPiece.maxX < 11) {
-                        if (!checkHorizontal(1)) {
-                            clearPiece(); // removes current piece
-                            rcolumn += 1; //move it right
-                            fillPiece(); //redraw the piece
-                            //Log.println(Log.DEBUG, "CHECKING " , "from here " );
-                            if(checkBelow(cPiece,cRow-1,rcolumn)){
-                                fixBlock(cPiece.block,-1);
-                                blockAfterHorizontalMove=true;
-                            } else {
-                                blockAfterHorizontalMove=false;
-                            }
+        moveRight.setOnClickListener(v -> {
+            if (cPiece!=null) {
+                if (rcolumn + cPiece.maxX < 11) {
+                    if (!checkHorizontal(1)) {
+                        clearPiece(); // removes current piece
+                        rcolumn += 1; //move it right
+                        fillPiece(); //redraw the piece
+                        //Log.println(Log.DEBUG, "CHECKING " , "from here " );
+                        if (checkBelow(cPiece, cRow - 1, rcolumn)) {
+                            fixBlock(cPiece.block, -1);
+                            blockAfterHorizontalMove = true;
+                        } else {
+                            blockAfterHorizontalMove = false;
                         }
                     }
                 }
@@ -699,25 +671,22 @@ public class anotherflattris extends AppCompatActivity  {
         ImageButton moveLeft =findViewById(R.id.b2);
         moveLeft.setBackgroundColor(0xFF224466);
         moveLeft.setImageResource(R.drawable.ic_baseline_arrow_back_24);
-        moveLeft.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                if (cPiece!=null) {
-                    if (rcolumn + cPiece.minX > 0) {
-                        //
-                        if (!checkHorizontal(-1)) {
-                            clearPiece();
-                            rcolumn -= 1;
-                            fillPiece();
-                            boolean belowBlock = checkBelow(cPiece,cRow-1,rcolumn);
-                            Log.println(Log.DEBUG,"why not doing this?"+belowBlock,"");
-                            if(belowBlock){
-                                // it needs to be checked if the correction is needed somehow
-                                fixBlock(cPiece.block,-1);
-                                blockAfterHorizontalMove=true;
-                            } else{
-                                blockAfterHorizontalMove=false;
-                            };
+        moveLeft.setOnClickListener(v -> {
+            //
+            if (cPiece!=null) {
+                if (rcolumn + cPiece.minX > 0) {
+                    if (!checkHorizontal(-1)) {
+                        clearPiece();
+                        rcolumn -= 1;
+                        fillPiece();
+                        boolean belowBlock = checkBelow(cPiece, cRow - 1, rcolumn);
+                        Log.println(Log.DEBUG, "why not doing this?" + belowBlock, "");
+                        if (belowBlock) {
+                            // it needs to be checked if the correction is needed somehow
+                            fixBlock(cPiece.block, -1);
+                            blockAfterHorizontalMove = true;
+                        } else {
+                            blockAfterHorizontalMove = false;
                         }
                     }
                 }
@@ -727,37 +696,39 @@ public class anotherflattris extends AppCompatActivity  {
         ImageButton moveDown =findViewById(R.id.b3);
         moveDown.setBackgroundColor(0xFF224466);
         moveDown.setImageResource(R.drawable.ic_baseline_arrow_downward_24);
-        moveDown.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                if (cPiece!=null) {
-                    prevDelay=Math.max(delay,prevDelay);
-                    delay = 0;
+        moveDown.setOnClickListener(v -> {
+            if (cPiece!=null) {
+                prevDelay=Math.max(delay,prevDelay);
+                if (delay==prevDelay/10){
+                    delay=prevDelay;
+                } else {
+                    delay = delay / 10;
                 }
             }
+        });
+        moveDown.setOnLongClickListener(v -> {
+            if (cPiece!=null) {
+                prevDelay=Math.max(delay,prevDelay);
+                delay =0;
+            }
+            return true;
         });
 
         ImageButton turnLeft =findViewById(R.id.b1);
         turnLeft.setBackgroundColor(0xFF224466);
         turnLeft.setImageResource(R.drawable.ic_baseline_rotate_left_24);
-        turnLeft.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                if (cPiece!=null) {
-                    rotateLeft();
-                }
+        turnLeft.setOnClickListener(v -> {
+            if (cPiece!=null) {
+                rotateLeft();
             }
         });
 
         ImageButton turnRight =findViewById(R.id.b5);
         turnRight.setBackgroundColor(0xFF224466);
         turnRight.setImageResource(R.drawable.ic_baseline_rotate_right_24);
-        turnRight.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                if (cPiece!=null) {
-                    rotateRight();
-                }
+        turnRight.setOnClickListener(v -> {
+            if (cPiece!=null) {
+                rotateRight();
             }
         });
     }
@@ -766,9 +737,9 @@ public class anotherflattris extends AppCompatActivity  {
         Point [] cp = cPiece.block;
         for (int i=0;i<cPiece.value;i++) {
             Point p = cp[i];
+            //buttons[cRow + p.y - 1][rcolumn + p.x].setBackgroundColor(colors[cPiece.value]);
             if (((cRow+p.y-1)>=0)&&(rcolumn+p.x>=0)) {
-                //buttons[cRow + p.y - 1][rcolumn + p.x].setBackgroundColor(colors[cPiece.value]);
-                buttons[cRow+p.y-1][rcolumn+p.x].setBackgroundResource(ButtonImages[cPiece.value]);
+                buttons[cRow + p.y - 1][rcolumn + p.x].setBackgroundResource(ButtonImages[cPiece.value]);
             }
         }
     }
@@ -777,9 +748,9 @@ public class anotherflattris extends AppCompatActivity  {
         Point [] cp = cPiece.block;
         for (int i=0;i<cPiece.value;i++) {
             Point p = cp[i];
+            //buttons[cRow + p.y - 1][rcolumn + p.x].setBackgroundColor(Color.TRANSPARENT);
             if (((cRow+p.y-1)>=0)&&(rcolumn+p.x>=0)) {
-                //buttons[cRow + p.y - 1][rcolumn + p.x].setBackgroundColor(Color.TRANSPARENT);
-                buttons[cRow + p.y - 1][rcolumn+p.x].setBackgroundResource(ButtonImages[0]);
+                buttons[cRow + p.y - 1][rcolumn + p.x].setBackgroundResource(ButtonImages[0]);
             }
         }
     }
@@ -790,7 +761,7 @@ public class anotherflattris extends AppCompatActivity  {
         Point [][] sizeblocks = FlatrisBlocks[blocksize];
         int block = (int)Math.floor(Math.random()*sizeblocks.length);
         Point [] currentBlock = sizeblocks[block];
-        Piece p = new Piece(currentBlock, blocksize+1);
+        Piece p = new Piece(currentBlock, blocksize + 1);
         return p;
     }
 
@@ -799,12 +770,11 @@ public class anotherflattris extends AppCompatActivity  {
         boolean blocked=false;
         Point[] p =piece.block;
         Log.println(Log.DEBUG,"fromCheckBelow " +piece.value,"checking row" +row+", col" +col);
-        for (int i=0;i<p.length;i++){
-            Point cp=p[i];
-            if (row+1+cp.y>21||well[row + 1 + cp.y][col + cp.x] > 0) { // this is removed to try
+        for (Point cp : p) {
+            if (row + 1 + cp.y > 21 || well[row + 1 + cp.y][col + cp.x] > 0) { // this is removed to try
                 blocked = true;
-                if (!(row+1+cp.y>21)) {
-                    Log.println(Log.DEBUG, "CHECKING " + (row + 1) + "," + col, "value " + well[row + 1 + cp.y][col + cp.x] +","+blocked);
+                if (!(row + 1 + cp.y > 21)) {
+                    Log.println(Log.DEBUG, "CHECKING " + (row + 1) + "," + col, "value " + well[row + 1 + cp.y][col + cp.x] + "," + blocked);
                 }
             }
         }
@@ -817,11 +787,11 @@ public class anotherflattris extends AppCompatActivity  {
     }
     public void initialize(ImageButton [][] buttons){
         topreached=false;
-        for (int i=0;i<12;i++){
-            for (int j=0; j<22;j++){
+        for (int i=0;i<12;i++) {
+            for (int j = 0; j < 22; j++) {
                 //buttons[j][i].setBackgroundColor(Color.TRANSPARENT);
                 buttons[j][i].setBackgroundResource(R.drawable.ic_f0);
-                well[j][i]=0;
+                well[j][i] = 0;
             }
         }
     }
@@ -1108,14 +1078,14 @@ public class anotherflattris extends AppCompatActivity  {
     }
 
 
-    public void newPiece(){
+    private void newPiece(){
         pieceOrigin = new Point (5,2);
         rotation = 0;
         // here we need to get a random piece
         //first we take a piece 1, the  a random piece with max 1 above the level that ia already there
     }
 
-    private class Piece{
+    private static class Piece{
         Point [] block;
         int value;
         int maxX;
@@ -1129,24 +1099,24 @@ public class anotherflattris extends AppCompatActivity  {
         private void calculateMaxMin(){
             maxX=Integer.MIN_VALUE;
             minX=Integer.MAX_VALUE;
-            for (int i=0;i<block.length;i++){
-                if (block[i].x<minX){
-                    minX=block[i].x;
+            for (Point point : block) {
+                if (point.x < minX) {
+                    minX = point.x;
                 }
-                if (block[i].x>maxX){
-                    maxX=block[i].x;
+                if (point.x > maxX) {
+                    maxX = point.x;
                 }
             }
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private boolean checkNeighbours(Point [] checkP){
-        if (gameMode ==0 || cPiece.value==1){
+        if (gameMode ==0 || cPiece.value==1) {
             return true;
         }
         if (gameMode==1) {
-            for (int i = 0; i < checkP.length; i++) {
-                Point p = checkP[i];
+            for (Point p : checkP) {
                 // we need to check already fixed cells around for their value
 
                 if (cRow + 1 + p.y < 22 && well[cRow + 1 + p.y][rcolumn + p.x] == cPiece.value - 1) {
@@ -1166,40 +1136,31 @@ public class anotherflattris extends AppCompatActivity  {
             // here we need to do the construction check
             // we need to find all values from 1 to checkP.length-1
             ArrayList<Integer> Surrounding = new ArrayList<Integer>();
-            for (int i = 0; i < checkP.length; i++) {
-                Point p = checkP[i];
+            for (Point p : checkP) {
                 // we need to check already fixed cells around for their value
-                if (cRow + 1 + p.y < 22){
-                    Surrounding.add(well[cRow + 1 + p.y][rcolumn + p.x]);
-                    //Log.println(Log.DEBUG, "Adding", "val" +well[cRow + 1 + p.y][rcolumn + p.x]);
-                }
-                if (cRow - 1 + p.y >= 0){
-                    Surrounding.add(well[cRow -1+ p.y][rcolumn + p.x]);
-                    //Log.println(Log.DEBUG, "Adding", "val" +well[cRow - 1 + p.y][rcolumn + p.x]);
-                }
-                if (rcolumn - 1 + p.x >= 0){
-                    Surrounding.add(well[cRow  + p.y][rcolumn -1+ p.x]);
-                    //Log.println(Log.DEBUG, "Adding", "val" +well[cRow + p.y][rcolumn -1+ p.x]);
-                }
-                if (rcolumn + 1 + p.x < 12){
-                    Surrounding.add(well[cRow  + p.y][rcolumn +1+ p.x]);
-                    //Log.println(Log.DEBUG, "Adding", "val" +well[cRow  + p.y][rcolumn +1+ p.x]);
-                }
+                //Log.println(Log.DEBUG, "Adding", "val" +well[cRow + 1 + p.y][rcolumn + p.x]);
+                if (cRow + 1 + p.y < 22) Surrounding.add(well[cRow + 1 + p.y][rcolumn + p.x]);
+                //Log.println(Log.DEBUG, "Adding", "val" +well[cRow - 1 + p.y][rcolumn + p.x]);
+                if (cRow - 1 + p.y >= 0) Surrounding.add(well[cRow - 1 + p.y][rcolumn + p.x]);
+                //Log.println(Log.DEBUG, "Adding", "val" +well[cRow + p.y][rcolumn -1+ p.x]);
+                if (rcolumn - 1 + p.x >= 0) Surrounding.add(well[cRow + p.y][rcolumn - 1 + p.x]);
+                //Log.println(Log.DEBUG, "Adding", "val" +well[cRow  + p.y][rcolumn +1+ p.x]);
+                if (rcolumn + 1 + p.x < 12) Surrounding.add(well[cRow + p.y][rcolumn + 1 + p.x]);
             }
             // now we have an  ArrayList with all surrounding values, we just need to check if they are all present
-            for (int i=0;i<cPiece.value;i++){
-                if (!Surrounding.contains(i)){
-                    nLives-=1;
-                    Button Lives =findViewById(R.id.bt3);
-                    Lives.setText(""+nLives);
-                    if (nLives==0 || topreached){
-                        int tscore =0;
-                        for (int k=0;k<22;k++){
-                            for (int j=0;j<12;j++){
-                                tscore+=well[k][j]*(gameMode+1);
+            for (int i=0;i<cPiece.value;i++) {
+                if (!Surrounding.contains(i)) {
+                    nLives -= 1;
+                    Button Lives = findViewById(R.id.bt3);
+                    Lives.setText("" + nLives);
+                    if (nLives == 0 || topreached) {
+                        int tscore = 0;
+                        for (int k = 0; k < 22; k++) {
+                            for (int j = 0; j < 12; j++) {
+                                tscore += well[k][j] * (gameMode + 1);
                             }
                         }
-                        if (delay!=0) {
+                        if (delay != 0) {
                             tscore += (1000 - delay);
                         } else {
                             tscore += (1000 - prevDelay);
@@ -1216,15 +1177,15 @@ public class anotherflattris extends AppCompatActivity  {
         Lives.setText(""+nLives);
         if (nLives==0 || topreached){
             int tscore =0;
-            for (int i=0;i<22;i++){
-                for (int j=0;j<12;j++){
-                    tscore+=well[i][j]*(gameMode+1);
+            for (int i=0;i<22;i++) {
+                for (int j = 0; j < 12; j++) {
+                    tscore += well[i][j] * (gameMode + 1);
                 }
             }
             if (delay!=0) {
                 tscore += (1000 - delay);
             } else {
-                tscore += (1000-prevDelay);
+                tscore += (1000 - prevDelay);
             }
             showEndMessage(tscore);
         }
@@ -1239,81 +1200,82 @@ public class anotherflattris extends AppCompatActivity  {
                 soundPool.play(hammerSound, 0.6f, 0.6f, 0, 0, 1);
             }
             int cmax=0;
-            for (int i=0;i<22;i++){
-                for (int j=0;j<12;j++){
-                    if (well[i][j]>cmax){
-                        cmax=well[i][j];
+            for (int i=0;i<22;i++) {
+                for (int j = 0; j < 12; j++) {
+                    if (well[i][j] > cmax) {
+                        cmax = well[i][j];
                     }
                 }
             }
             maxWell=Math.min(cmax+1,9);
-            for (int i = 0; i < toFix.length; i++) {
-                Point p = toFix[i];
-                if (cRow +corr + p.y >= 0) {
-                    well[cRow +corr+ p.y][rcolumn + p.x] = cPiece.value;
-                    Log.println(Log.DEBUG, "set "+cPiece.value, "setting row" + (cRow +corr+ p.y) + ", col" + (rcolumn + p.x));
+            for (Point p : toFix) {
+                if (cRow + corr + p.y >= 0) {
+                    well[cRow + corr + p.y][rcolumn + p.x] = cPiece.value;
+                    Log.println(Log.DEBUG, "set " + cPiece.value, "setting row" + (cRow + corr + p.y) + ", col" + (rcolumn + p.x));
                 }
 
-                if (cRow +corr+ p.y <= 0) {
+                if (cRow + corr + p.y <= 0) {
                     topreached = true;
                 }
             }
         } else {
-            if (playSounds){
-                soundPool.play(towerFailSound,0.3f,0.3f,0,0,1);
-                }
+            if (playSounds) {
+                soundPool.play(towerFailSound, 0.3f, 0.3f, 0, 0, 1);
+            }
             repaint();
         }
         // check full lines here
         ArrayList<Integer> remove = checkFullRows();
         // remove full lines here
-        if (remove.size()>0){
-            removeFullRows(remove);
+        if (remove.size()>0) {
+            removeFullRows(remove, true);
         }
     }
 
-    private void removeFullRows(ArrayList<Integer> remove){
+    private void removeFullRows(ArrayList<Integer> remove, boolean selfFilled){
         // this contains all integer that need to be removed, best way is to start at the bottom
         // add a counter to move lines above more down
         int count =0;
         for (int i=remove.size()-1;i>=0;i--){ // reverse through the lines
             int cremove = remove.get(i)+count;
             //Log.println(Log.DEBUG, "Removing row ", "row" +cremove);
-            for (int j=cremove;j>=0;j--){
-                //j is the first row that needs to be removed
-                //Log.println(Log.DEBUG, "j= "+j, "row" +cremove);
-                //Log.println(Log.DEBUG, "Moving row "+j, "row" +cremove);
-                if (j-1>0) {
+            //j is the first row that needs to be removed
+            //Log.println(Log.DEBUG, "j= "+j, "row" +cremove);
+            //Log.println(Log.DEBUG, "Moving row "+j, "row" +cremove);
+            for (int j=cremove;j>=0;j--) {
+                if (j - 1 > 0) {
                     well[j] = well[j - 1];
                 } else {
-                    well[j]= new int[12];
-                    for (int k=0;k<12;k++){
-                        well[j][k]=0;
+                    well[j] = new int[12];
+                    for (int k = 0; k < 12; k++) {
+                        well[j][k] = 0;
                     }
                 }
             }
             count++;
         }
         //repaint needs to be done
-        if (increment){
-            if (delay>0) {
-                delay = (int) (Double.valueOf(delay) * 0.95);
+        // Log.println(Log.DEBUG, "delay set at ", "" +delay);
+        if (increment) {
+            if (delay > 0) {
+                delay = (int) ((double) delay * 0.95);
             } else {
-                delay = (int) (Double.valueOf(prevDelay) * 0.95);
-                prevDelay=delay;
+                delay = (int) ((double) prevDelay * 0.95);
+                prevDelay = delay;
             }
-           // Log.println(Log.DEBUG, "delay set at ", "" +delay);
         }
-        if(nLives<9){
-            nLives+=1;
+        if(nLives<9 && gameMode!=0 && selfFilled) {
+            nLives += 1;
+            Button Lives = findViewById(R.id.bt3);
+            Lives.setText("" + nLives);
         }
         repaint();
     }
 
     private void repaint(){
-        for (int i=0;i<22;i++){
-            for (int j=0;j<12;j++){
-                //buttons[i][j].setBackgroundColor(colors[well[i][j]]);
+        //buttons[i][j].setBackgroundColor(colors[well[i][j]]);
+        for (int i=0;i<22;i++) {
+            for (int j = 0; j < 12; j++) {
                 buttons[i][j].setBackgroundResource(ButtonImages[well[i][j]]);
             }
         }
@@ -1324,13 +1286,12 @@ public class anotherflattris extends AppCompatActivity  {
         for (int i=0;i<well.length;i++){
             int count=0;
             int tscore=0;
-            for (int j=0;j<well[0].length;j++){
-                if (well[i][j]>0){
+            for (int j=0;j<well[0].length;j++)
+                if (well[i][j] > 0) {
                     count++;
-                    tscore+=well[i][j]*(gameMode+1);
+                    tscore += well[i][j] * (gameMode + 1);
 
                 }
-            }
             if (delay!=0) {
                 tscore += (1000 - delay);
             } else {
@@ -1343,117 +1304,130 @@ public class anotherflattris extends AppCompatActivity  {
         }
         return fullrows;
     }
+    @SuppressLint("SetTextI18n")
     private void showEndMessage(int tscore){
         // game over. show game over graphic
 //        Looper.prepare();
-        runOnUiThread(new Runnable() {
-            public void run() {
+        runOnUiThread(() -> {
 
-                //your alert dialog here..
+            //your alert dialog here..
 
-                if (nLives==0){
-
-                    new MaterialAlertDialogBuilder(anotherflattris.this)
-                    .setTitle(getResources().getString(R.string.Game_over))
-                    .setMessage(getResources().getString(R.string.Score1)+(score+tscore)+getResources().getString(R.string.Score2))
-                    .setPositiveButton(getResources().getString(R.string.WatchAd), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
+            if (nLives==0) {
+                new MaterialAlertDialogBuilder(anotherflattris.this)
+                        .setTitle(getResources().getString(R.string.Game_over))
+                        .setMessage(getResources().getString(R.string.Score1) + " " + (score + tscore) + " " + getResources().getString(R.string.Score2))
+                        .setPositiveButton(getResources().getString(R.string.WatchAd), (dialogInterface, i) -> {
                             // here we add the ad
-                            Log.d(TAG, "Before nLives."+nLives);
+                            Log.d(TAG, "Before nLives." + nLives);
                             if (mRewardedAd != null) {
                                 Activity activityContext = anotherflattris.this;
-                                mRewardedAd.show(activityContext, new OnUserEarnedRewardListener() {
-                                    @Override
-                                    public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
-                                        // Handle the reward.
-                                        Log.d(TAG, "The user earned the reward.");
-                                        int rewardAmount = rewardItem.getAmount();
-                                        String rewardType = rewardItem.getType();
-                                        anotherflattris.reward=1;
-                                        nLives=1;
-                                        //setNLivesButton(true);
-                                        Log.d(TAG, "nLives set to"+nLives);
-                                        nLives=reward;
-                                        synchronized (mythread) {
-                                            mythread.pause=false;
-                                            mythread.notify();
-                                        }
-                                        Button Lives =findViewById(R.id.bt3);
-                                        Lives.setText(""+nLives);
-                                        //can we reload an add?
+                                // here we reload the add
+                                mRewardedAd.show(activityContext, rewardItem -> {
+                                            // Handle the reward.
+                                            Log.d(TAG, "The user earned the reward.");
+                                            int rewardAmount = rewardItem.getAmount();
+                                            rewardItem.getType();
+                                            anotherflattris.reward = 1;
+                                            nLives = 1;
+                                            //setNLivesButton(true);
+                                            Log.d(TAG, "nLives set to" + nLives);
+                                            nLives = reward;
+                                            synchronized (mythread) {
+                                                mythread.pause = false;
+                                                mythread.notify();
+                                            }
+                                            Button Lives = findViewById(R.id.bt3);
+                                            Lives.setText("" + nLives);
+                                            //can we reload an add?
 
-                                    }
-                                    // here we reload the add
-                                }
+                                        }
                                 );
 
                             } else {
                                 Log.d(TAG, "The rewarded ad wasn't ready yet.");
                             }
-                        }
-                    })
-                    .setNegativeButton("Quit game", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
+                        })
+                        .setNegativeButton(getResources().getString(R.string.Quit), (dialogInterface, i) -> {
                             //mythread.interrupt();
-                            gamerun=false;
-                            gamestarted=false;
+                            gamerun = false;
+                            gamestarted = false;
                             setNLivesButton(false);
-                            for (int k=0;k<22;k++){
-                                for (int l=0;l<12;l++){
-                                    well[k][l]=0;
+                            for (int k = 0; k < 22; k++) {
+                                for (int l = 0; l < 12; l++) {
+                                    well[k][l] = 0;
                                 }
                             }
                             repaint();
-                            ImageButton startGame =findViewById(R.id.bt1);
+                            ImageButton startGame = findViewById(R.id.bt1);
                             startGame.setImageResource(R.drawable.ic_baseline_play_circle_outline_24);
                             // now add to the highscore table:
-                            Intent intent =new Intent(getApplicationContext(),HighScore.class);
-                            intent.putExtra("Score", score+tscore);
-                            intent.putExtra("GameMode",gameMode);
-                            intent.putExtra("GameOver",1);
+                            Intent intent = new Intent(getApplicationContext(), HighScore.class);
+                            intent.putExtra("Score", score + tscore);
+                            intent.putExtra("GameMode", gameMode);
+                            intent.putExtra("GameOver", 1);
                             //Log.println(Log.DEBUG,"done","val" +score);
                             startActivity(intent);
-                        }
-                    })
-                    .show();
-
-                } else if (topreached){
-                    //upadte score
+                        })
+                        .show();
+            } else //upadte score
+                if (topreached) {
                     new MaterialAlertDialogBuilder(anotherflattris.this)
                             .setTitle(getResources().getString(R.string.Game_over))
-                            .setMessage(getResources().getString(R.string.Score1)+(score+tscore)+getResources().getString(R.string.Score2))
-                            .setNegativeButton(getResources().getString(R.string.Quit), new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    //mythread.interrupt();
-                                    gamerun=false;
-                                    gamestarted=false;
-                                    setNLivesButton(false);
-                                    for (int k=0;k<22;k++){
-                                        for (int l=0;l<12;l++){
-                                            well[k][l]=0;
+                            .setMessage(getResources().getString(R.string.Score1) + " " + (score + tscore) + " " + getResources().getString(R.string.Score2))
+                            .setPositiveButton(getResources().getString(R.string.WatchAd2), (dialogInterface, i) -> {
+                                // here we add the ad
+                                Log.d(TAG, "Before nLives." + nLives);
+                                if (mRewardedAd != null) {
+                                    Activity activityContext = anotherflattris.this;
+                                    // here we reload the add
+                                    mRewardedAd.show(activityContext, rewardItem -> {
+                                            // Handle the reward.
+                                            Log.d(TAG, "The user earned the reward.");
+                                            ArrayList<Integer> rowstoremove = new ArrayList<Integer>();
+                                            for (int j=0;j<10;j++){
+                                                rowstoremove.add((int)Math.random()*22);
+
+                                            }
+                                            removeFullRows(rowstoremove,false);
+                                            synchronized (mythread) {
+                                                mythread.pause = false;
+                                                mythread.notify();
+                                            }
                                         }
-                                    }
-                                    repaint();
-                                    ImageButton startGame =findViewById(R.id.bt1);
-                                    startGame.setImageResource(R.drawable.ic_baseline_play_circle_outline_24);
-                                    // now add to the highscore table:
-                                    Intent intent =new Intent(getApplicationContext(),HighScore.class);
-                                    intent.putExtra("Score", score+tscore);
-                                    intent.putExtra("GameMode",gameMode);
-                                    intent.putExtra("GameOver",1);
-                                    //Log.println(Log.DEBUG,"done","val" +score);
-                                    startActivity(intent);
+                                    );
+
+                                } else {
+                                    Log.d(TAG, "The rewarded ad wasn't ready yet.");
                                 }
+                            })
+
+                            .setNegativeButton(getResources().getString(R.string.Quit), (dialogInterface, i) -> {
+                                //mythread.interrupt();
+                                gamerun = false;
+                                gamestarted = false;
+                                setNLivesButton(false);
+                                for (int k = 0; k < 22; k++) {
+                                    for (int l = 0; l < 12; l++) {
+                                        well[k][l] = 0;
+                                    }
+                                }
+                                repaint();
+                                ImageButton startGame = findViewById(R.id.bt1);
+                                startGame.setImageResource(R.drawable.ic_baseline_play_circle_outline_24);
+                                // now add to the highscore table:
+                                Intent intent = new Intent(getApplicationContext(), HighScore.class);
+                                intent.putExtra("Score", score + tscore);
+                                intent.putExtra("GameMode", gameMode);
+                                intent.putExtra("GameOver", 1);
+                                //Log.println(Log.DEBUG,"done","val" +score);
+                                startActivity(intent);
                             })
                             .show();
                 }
-            }
         });
     }
 
+    @SuppressWarnings({"CatchMayIgnoreException", "ConstantConditions", "BusyWait"})
     private class FlatThread extends Thread{
 
         public boolean pause = false;
@@ -1465,15 +1439,16 @@ public class anotherflattris extends AppCompatActivity  {
             maxWell=1;
             cPiece = getNewPiece(maxWell);
             rcolumn=5;
-            while (topreached ==false ){ // split to set pause from this thread?
+            while (!topreached){ // split to set pause from this thread?
                 synchronized (this) {
                     if (pause) {
                         try {
                             wait();
-                        } catch (InterruptedException e){
+                        } catch (InterruptedException e) {
                         }
                     }
                 }
+                // this happens in there are no lives left
                 if (nLives>0) { // now block fixes afer movement, let's try and recode
                     try { // move the block down
                         Thread.sleep(delay);
@@ -1481,15 +1456,13 @@ public class anotherflattris extends AppCompatActivity  {
                         //Log.println(Log.DEBUG,"done","val" +cPiece.value);
                         // this cannot be done when move right or left has caused a block below
                         if (!blockAfterHorizontalMove) {
-                            if (cRow > 0) { // clear previous drawing
-                                clearPiece();
-                            }
+                            // clear previous drawing
+                            if (cRow > 0) clearPiece();
                             for (int i = 0; i < cPiece.value; i++) {
                                 Point p = cp[i];
-                                if (((cRow + p.y) >= 0) && (rcolumn + p.x >= 0)) {
-                                    //buttons[cRow + p.y][rcolumn + p.x].setBackgroundColor(colors[cPiece.value]);
+                                //buttons[cRow + p.y][rcolumn + p.x].setBackgroundColor(colors[cPiece.value]);
+                                if (((cRow + p.y) >= 0) && (rcolumn + p.x >= 0))
                                     buttons[cRow + p.y][rcolumn + p.x].setBackgroundResource(ButtonImages[cPiece.value]);
-                                }
                             }
                         }
                     } catch (InterruptedException e) {
@@ -1514,39 +1487,33 @@ public class anotherflattris extends AppCompatActivity  {
                             delay = prevDelay;
                         }
                     }
-                    if (pieceFalling == false) {
+                    if (!pieceFalling) {
                         cRow = 0;
                         cPiece = getNewPiece(maxWell);
                         blockAfterHorizontalMove=false;
                         rcolumn = (int) (Math.floor(Math.random() * 5) + Math.floor(Math.random() * 5)) + 1;
                         pieceFalling = true;
                     }
-                    //todo: check when this changes
                     cRow += 1;
-                } else { // this happens in there are no lives left
-                    this.pause=true;
-                }
+                } else this.pause = true;
             }
-            mHandler.post(new Runnable() { // this happens if the top is reached
-                public void run(){
-                    int tscore =0;
-                    for (int i=0;i<22;i++){
-                        for (int j=0;j<12;j++){
-                            //score +=well[i][j];
-                            tscore+=well[i][j]*(gameMode+1);
-
-                        }
+            // this happens if the top is reached
+            mHandler.post(() -> {
+                int tscore =0;
+                //score +=well[i][j];
+                for (int i=0;i<22;i++) {
+                    for (int j = 0; j < 12; j++) {
+                        tscore += well[i][j] * (gameMode + 1);
                     }
-                    if (delay!=0) {
-                        tscore += (1000 - delay);
-                    } else {
-                        tscore += (1000 - prevDelay);
-                    }
-                    showEndMessage(tscore);
                 }
+                if (delay!=0) {
+                    tscore += (1000 - delay);
+                } else {
+                    tscore += (1000 - prevDelay);
+                }
+                showEndMessage(tscore);
             });
         }
-
     }
 
     @Override
